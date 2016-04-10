@@ -1,0 +1,2 @@
+# scoreboard
+Trivia Scoreboard
