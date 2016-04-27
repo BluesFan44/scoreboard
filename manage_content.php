@@ -1,5 +1,5 @@
 <?php $layout_context = "admin"; ?>
-<?php include("/includes/layouts/header.php"); ?>
+<?php include("includes/layouts/header.php"); ?>
 <?php find_selected_page(); ?>
 
 <div id="main">

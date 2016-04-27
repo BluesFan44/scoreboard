@@ -1,6 +1,5 @@
-<?php require_once("/includes/session.php"); ?>
-<?php require_once("/includes/db_connection.php"); ?>
-<?php require_once("/includes/functions.php"); ?>
+<?php $layout_context = "admin"; 
+     include("includes/layouts/header.php");?>
 
 <?php
   $current_page = find_page_by_id($_GET["page"], false);

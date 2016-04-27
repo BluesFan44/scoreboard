@@ -19,7 +19,7 @@ $(function () {
                 if (item.Score != null) {
                   $("#tableNo" + item.Team + "-" + item.Score).attr('checked', true);
                   $("#tableNo" + item.Team + "-" + item.Score).button( "refresh" );
-                  $("#total" + item.Team).addClass('updated'); }
+                  $("#total" + item.Team).addClass('w3-green'); }
               });
             });
   });

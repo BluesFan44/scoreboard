@@ -1,9 +1,6 @@
 <?php
-require_once("/includes/db_connection.php");
-require_once("/includes/functions.php");
-require_once("/includes/session.php");
 $layout_context = "admin";
-include("/includes/layouts/header.php");
+     include("includes/layouts/header.php");?>
 ?>
 
 <div id="main">

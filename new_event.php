@@ -1,8 +1,8 @@
-<?php require_once("/includes/validation_functions.php"); ?>
+<?php include("includes/layouts/header.php");  
+require_once("includes/validation_functions.php");
 
-
-<?php
 if (isset($_POST['submit'])) {
+// include("includes/layouts/header.php");
   // Process the form
   
   // validations
@@ -50,7 +50,7 @@ if (isset($_POST['submit'])) {
 } // end: if (isset($_POST['submit']))
 
 ?>
-<?php include("/includes/layouts/header.php"); ?>
+
 <div id="main">
 
   <div id="page">
