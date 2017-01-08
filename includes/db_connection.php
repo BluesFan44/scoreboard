@@ -1,11 +1,11 @@
 <?php
 //  define("DB_SERVER", "brentbollmeier.com");
-//	define("DB_SERVER", "localhost");
+	define("DB_SERVER", "localhost");
 //        define("DB_USER", "tnguser");
 //	define("DB_PASS", "tkachuk7");
 //	define("DB_NAME", "tng");
     
-	define("DB_SERVER", "brentbollmeier.com");
+//	define("DB_SERVER", "brentbollmeier.com");
 	define("DB_USER", "tng_user");
 	define("DB_PASS", "tkachuk7");
 	define("DB_NAME", "tng_scoreboard");

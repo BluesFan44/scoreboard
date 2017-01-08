@@ -40,7 +40,7 @@ function make_scoregrid() {
             '<th class="w3-center">Round <span id="currentRound">' . $current_round_int . '</span></th>' .
             '<th class="w3-center">Total</th></tr>';
     while ($round = mysqli_fetch_assoc($event_scores_set)) {
-        if ($round["isPlaying"] || $current_round_int == 1) {
+       if ((int) $round["isPlaying"] == 1 || $current_round_int == 1) {
             $i = $round["Team"];
             $ret_string .= '<tr><td class="w3-center">' . $i . '</td><td class="jqradio w3-center" style="white-space:nowrap;vertical-align:middle">' . scoreRadio($i, $round);
             $ret_string .= '</td><td class="w3-center" id=total' . $i;
@@ -135,7 +135,7 @@ function get_team_totals($round) {
 function find_round_set_by_id() {
     global $connection;
     global $current_event;
-    $query = "SELECT * FROM vwscoreboard ";
+    $query = "SELECT * FROM vwplayingscoreboard ";
     $query .= "WHERE eventid = {$current_event["eventID"]} ";
     $query .= "order by team asc";
     $round_set = mysqli_query($connection, $query);
