@@ -1,158 +1,18 @@
-
-html { width: 1024px; height: 728px; }
-body {
-  
-  margin: 0; padding: 0; border: 0;
-  font-family: "Trebuchet MS";
-  font-size: 20px; line-height: 22px;
-  background: #EEE4B9;
-}
-img { border: none; }
-a { color: #8D0D19; }
-a:hover { color: #1A446C; }
-
-#header { 
-  height: 100px; width:100%;
-  margin: 0; padding: 0; text-align: left; vertical-align: middle;
-  background: #1A446C; color: #D4E6F4;
-  position:fixed;
-  z-index: 5;
-}
-#header h1 { padding: 1em; margin: 0; }
-#main { 
-  height:auto; width: auto; 
-  margin: 0; 
-  background: #EEE4B9;
-  z-index: 1;
-}
-#footer { 
-  clear: both;
-  height: 50px; width:100%; 
-  text-align: center; 
-  background: #1A446C;  color: #D4E6F4;
-  position:fixed;
-  bottom:0;
-  z-index: 4;
-}
-
-/* Navigation */
-#navigation { 
-  float: left;
-  width: 150px; height: 100%; 
-  margin: 0; padding: 0 2em; 
-  color: #D4E6F4; background: #8D0D19;
-}
-#navigation a { color: #D4E6F4; text-decoration: none; }
-#navigation a:hover { color: #FFFFFF; }
-ul.subjects { 
-  margin: 1em 0; padding-left: 0; list-style: none;
-}
-ul.pages { padding-left: 2em; list-style: square; font-weight: normal; }
-.selected { font-weight: bold; }
-
-/* Page Content */
-#page { 
-  float: left; height: auto; width:100%;
-  vertical-align: top; margin:10px;
-  background: #EEE4B9;
-  padding-top: 100px;
-  padding-bottom: 50px;
-}
-#page h2 { color: #000000; margin-top: 10px;}
-#page h3 { color: #8D0D19; }
-.centre {
-  text-align: center}
-.view-content {
-  margin: 1em; padding: 1em; border: 1px solid #999;
-}
-
-div.message { 
-  border: 2px solid #8D0D19;
-  color: #8D0D19; font-weight: bold;
-  margin: 1em 0 ; padding: 1em; 
-}
-
-.updated {
-  color: #ffffff; 
-  background-color: darkgreen;
-  font-weight: bold;
-}
-
-/* errors */
-.error {
-  color: #8D0D19; border: 2px solid #8D0D19;
-  margin: 1em 0; padding: 1em;
-}
-.error ul { padding-left: 2em; }
-
-.round {    margin-left:5%; 
-    margin-right:5%;
-  vertical-align: middle;
+.scoreboard {    
+  margin-left: auto;
+  margin-right:auto;
+  margin-top:2em;
   border-collapse: separate;
   border-color: #000000;
   border-width: 3px;
   border-style: solid;
   border-spacing: 0px;
   padding:0;
-  width:80%;
-  text-align: center;
-}
-
-
-
-.round tr:nth-child(odd) {
-  height: 2em;
-  vertical-align: middle; 
-  padding:20px; margin: 5px; 
-  background-color: #D4E6F4;
-}
-
-.round tr:nth-child(even) {
-  height: 2em;
-  vertical-align: middle; 
-  padding:20px; margin: 5px; 
-  background-color: #ffffff;
-}
-
-.round tr:first-child {
-  height: 2em;
-  vertical-align: middle; 
-  padding:20px; margin: 5px; 
-  background-color: #000000;
-  color:#FFFFFF;
-}
-/**/
-.round td {
-  vertical-align: middle; 
-  padding:5px;
-  border-color: #000000;
-  border-width: 1px 0 0 0;
-  border-style: solid;
-}
-
-.scoreboard {    margin-left:2em; 
-    margin-right:1em;
-    margin-top:1em;
-  vertical-align: middle;
-  border-collapse: separate;
-  border-color: #000000;
-  border-width: 3px;
-  border-style: solid;
-  border-spacing: 0px;
-  padding:0;
-  text-align: center;
   font-size: 16px; 
   font-weight: bold;
   line-height: 16px;
-  float:left;
-}
-
-.divleft {
-  float:left;
-}
-
-.divright {
-  float:right;
+  text-align : center;
+  width:auto;
 }
 
 .scoreboard tr:nth-child(odd) {
@@ -173,14 +33,17 @@ div.message {
 /**/
 .scoreboard td, .scoreboard th {
   vertical-align: middle; 
+  text-align: center;
   width:3em;
   height: 1.5em;
   border-color: #000000;
   border-width: 1px 0 0 0;
   border-style: solid;
 }
-
-.w3-green {
-    background-color: green;
-    color:white;
+.w3-table td, .w3-table th, .w3-table-all td, .w3-table-all th, label {
+    padding: 2px;
+    display: table-cell;
+    text-align: left;
+    vertical-align: middle;
+    margin:0px;
 }
