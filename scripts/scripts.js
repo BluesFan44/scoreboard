@@ -13,7 +13,7 @@ $(function () {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                update(this.responseText);
+                updateScore(this.responseText);
             }
         };
         xhttp.open("GET", 'services/srvAddScore.php?event=' + eventNo + '&team=' + table + '&round=' + round + '&score=' + score, true);
@@ -22,7 +22,7 @@ $(function () {
 });
 
 
-function update(data) {
+function updateScore(data) {
     var JSONdata = $.parseJSON(data);
     $.each(JSONdata, function (i, item) {
         $("#total" + item.Team).html(item.Total);
@@ -35,4 +35,20 @@ function update(data) {
 }
 ;
 
-//$.post('services/srvAddScore.php?event=' + eventNo + '&team=' + table + '&round=' + round + '&score=' + score,
+$(function () {
+    $(".teamName").change(function () {
+        teamName = $(this).val();
+        table = ($(this).attr("name")).substr(4,5);
+        eventNo = $("#currentEvent").val();
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                  $("#team" + data).addClass('w3-green');
+//                updateTeamName(this.responseText);
+//                alert('Response = ' + this.responseText);
+            }
+        };
+        xhttp.open("GET", 'services/srvNameTeam.php?eventid=' + eventNo + '&team=' + table + '&teamName=' + teamName, true);
+        xhttp.send();
+    });
+});

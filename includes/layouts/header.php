@@ -8,7 +8,7 @@ require_once("includes/db_connection.php");
 
 <html lang="en">
     <head>
-        <title>Trivia Night Scoreboard</title> 
+        <title>Scoreboard</title> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <link href="scripts/jquery-ui-1.11.3/jquery-ui.css" rel="stylesheet" type="text/css"/>
@@ -21,5 +21,5 @@ require_once("includes/db_connection.php");
     </head>
     <body>
         <div id="header" class="w3-container w3-indigo w3-padding-tiny w3-round-large">
-            <h1 class="w3-xxxlarge w3-text-shadow w3-font w3-center">Trivia Night Guy Scoreboard</h1>
+            <h1 class="w3-xxxlarge w3-text-shadow w3-font w3-center">Scoreboard</h1>
         </div>

@@ -10,7 +10,7 @@
  */
 
 
-$query = "select * from vwplayingscoreboard";
+$query = "select * from vwplayingscoreboard where isplaying=1 order by place";
 $result = mysqli_query($connection, $query);
 $i = 1;
 $returnHTML = '<table class="scoreboard"><tr><th>Tbl</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>Total</th><th>Rank</th></tr>';

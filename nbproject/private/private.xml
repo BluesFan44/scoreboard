@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Bitnami/wampstack-5.6.29-0/apache2/htdocs/scoreboard/services/srvGetScores.php</file>
-            <file>file:/C:/Bitnami/wampstack-5.6.29-0/apache2/htdocs/scoreboard/stylesheets/public.css</file>
-            <file>file:/C:/Bitnami/wampstack-5.6.29-0/apache2/htdocs/scoreboard/includes/layouts/header.php</file>
-            <file>file:/C:/Bitnami/wampstack-5.6.29-0/apache2/htdocs/scoreboard/scoreboard.php</file>
+            <file>file:/W:/scoreboard/services/srvGetScores.php</file>
+            <file>file:/W:/scoreboard/scoreboard.php</file>
+            <file>file:/W:/scoreboard/stylesheets/public.css</file>
+            <file>file:/W:/scoreboard/includes/functions.php</file>
+            <file>file:/W:/scoreboard/scripts/scripts.js</file>
         </group>
     </open-files>
 </project-private>

@@ -12,37 +12,46 @@ function make_scoregrid() {
     //<div class="w3-col m1 l2 w3-left">&nbsp;</div><div class="w3-col m1 l2 w3-right">&nbsp;</div>
     $ret_string = '<div class="w3-row">' .
             '<div class="w3-rest w3-center"><ul class="w3-pagination w3-round-large w3-khaki w3-padding-tiny">';
-    $prev_round_int=$current_round_int-1;
+    $prev_round_int = $current_round_int - 1;
     $ret_string .= "<li";
     if ($current_round_int === 1) {
-       $ret_string .= " style='visibility:hidden'";
+        $ret_string .= " style='visibility:hidden'";
     }
-    $ret_string .= "><a href='score_event.php?event={$current_event["eventID"]}&round={$prev_round_int}'><span class='glyphicon glyphicon-arrow-left'></span></a></li>";
+    $ret_string .= "><a href='score_event.php?event={$current_event["eventID"]}&round={$prev_round_int}'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-caret-right-fill' viewBox='0 0 16 16'>
+    <path d='m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z'/>
+  </svg></a></li>";
     for ($i = 1; $i <= 10; $i++) {
-        $ret_string .= "<li><a ";
+        $ret_string .= "<li>x<a ";
         if ($i === $current_round_int) {
             $ret_string .= "class=w3-red ";
         }
         $ret_string .= "href='score_event.php?event={$current_event["eventID"]}&round={$i}'>{$i}</a></li>";
     }
-    $next_round_int=$current_round_int+1;
+    $next_round_int = $current_round_int + 1;
     $ret_string .= "<li";
     if ($current_round_int === 10) {
-       $ret_string .= " style='visibility:hidden'";
+        $ret_string .= " style='visibility:hidden'";
     }
     $ret_string .= "><a href='score_event.php?event={$current_event["eventID"]}&round={$next_round_int}'><span class='glyphicon glyphicon-arrow-right'></span></a></li>";
-    
+
     $ret_string .= '</ul></div></div>' .
             '<div class="w3-row"><div class="w3-col m1 l2 w3-left">&nbsp;</div><div class="w3-col m1 l2 w3-right">&nbsp;</div>' .
             '<div class="w3-rest w3-center">' .
             '<table class="w3-table w3-striped">' .
-            '<tr style="vertical-align:middle"><th class="w3-center">Table #</th>' .
+            '<tr style="vertical-align:middle"><th class="w3-center">Table #</th><th class="w3-center">Team Name</th>' .
             '<th class="w3-center">Round <span id="currentRound">' . $current_round_int . '</span></th>' .
             '<th class="w3-center">Total</th></tr>';
     while ($round = mysqli_fetch_assoc($event_scores_set)) {
-       if ((int) $round["isPlaying"] == 1 || $current_round_int == 1) {
+        if ((int) $round["isPlaying"] == 1 || $current_round_int == 1) {
             $i = $round["Team"];
-            $ret_string .= '<tr><td class="w3-center">' . $i . '</td><td class="jqradio w3-center" style="white-space:nowrap;vertical-align:middle">' . scoreRadio($i, $round);
+            $ret_string .= '<tr><td class="w3-center">' . $i . '</td>';
+            if ($current_round_int == 1) {
+                $ret_string .= '<td class="w3-center"><input type="input" class="teamName" id="team' . $i . '" name="team' . $i . '" value="' . $round["TeamName"] . '"  /></td>';
+            } else {
+            $ret_string .= '<td class="w3-center">' . $round["TeamName"] . '</td>';
+            }
+            
+            $ret_string .= '<td class="jqradio w3-center" style="white-space:nowrap;vertical-align:middle">' . scoreRadio($i, $round);
             $ret_string .= '</td><td class="w3-center" id=total' . $i;
             if (isset($round[$current_round_int])) {
                 $ret_string .= ' class="updated"';
@@ -77,7 +86,18 @@ function find_all_events() {
     global $connection;
 
     $query = "SELECT * ";
-    $query .= "FROM tblevents where eventID > 0";
+    $query .= "FROM tblevents where eventID > 0 order by eventID desc";
+    $event_set = mysqli_query($connection, $query);
+    confirm_query($event_set, $query);
+    return $event_set;
+}
+
+function find_team_names() {
+    global $connection;
+    global $current_event;
+
+    $query = "SELECT * ";
+    $query .= "FROM tblteamnames where eventID = {$current_event["eventID"]} order by teamID";
     $event_set = mysqli_query($connection, $query);
     confirm_query($event_set, $query);
     return $event_set;
@@ -210,4 +230,24 @@ function form_errors($errors = array()) {
         $output .= "</div>";
     }
     return $output;
+}
+
+function make_namegrid() {
+
+    $ret_string = '<div class="w3-row"><div class="w3-col m1 l2 w3-left">&nbsp;</div>' .
+            '<div class="w3-col m1 l2 w3-right">&nbsp;</div>' .
+            '<div class="w3-rest w3-center"><table class="w3-table w3-striped">' .
+            '<tr style="vertical-align:middle"><th class="w3-center">Table #</th>' .
+            '</tr>' . "\r\n";
+    $event_set = find_team_names();
+    while ($event = mysqli_fetch_assoc($event_set)) {
+        $i = $event["teamID"];
+        $ret_string .= '<tr>';
+        $ret_string .= '<td class="w3-center">' . $i . '</td>';
+        $ret_string .= '<td class="w3-center"><input type="input" class="teamName" id="team' . $i . '" name="team' . $i . '" value="' . $event["teamName"] . '"  /></td>';
+
+        $ret_string .= '</tr>' . "\r\n";
+    }
+    $ret_string .= '</table></div></div>';
+    return $ret_string;
 }

@@ -14,9 +14,9 @@ include("/includes/layouts/header.php");
     $.get("services/srvGetScores.php", function (data) {
             $("#scoreboard").html(data);
         });
-//    setInterval(function () {
-//        $.get("services/srvGetScores.php", function (data) {
-//            $("#scoreboard").html(data);
-//        });
-//    }, 60000);
+    setInterval(function () {
+        $.get("services/srvGetScores.php", function (data) {
+            $("#scoreboard").html(data);
+        });
+    }, 10000);
 </script>

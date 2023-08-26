@@ -33,15 +33,21 @@ if (isset($_POST['submit'])) {
       $query .= "  {$event_id}, {$i}";
       $query .= ")";
       $result = mysqli_query($connection, $query);
+      $query  = "INSERT INTO tblteamnames (";
+      $query .= "  eventID, teamID, teamName";
+      $query .= ") VALUES (";
+      $query .= "  {$event_id}, {$i}, 'Table {$i}'";
+      $query .= ")";
+      $result = mysqli_query($connection, $query);
     }
-    
     if ($result) {
       // Success
       $_SESSION["message"] = "Event {$event_title} created.";
       redirect_to("index.php?event=" . $event_id) . "&round=1";
     } else {
       // Failure
-      $_SESSION["message"] = "Event creation failed.";
+      //$_SESSION["message"] = "Event creation failed.";
+        $_SESSION["message"] = $query;
     }
   }
 } else {
